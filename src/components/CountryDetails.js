@@ -8,25 +8,24 @@ function CountryDetails (props) {
     // 2. avec, retrouver l'objet detail parmi le tableau de tous les pays -> .find()
     //
 
-    let {countryId} = useParams()
+    let {countryId} = useParams()   // 1. extraire le alpha3 de l'url -> useParams()
     console.log('dataCountries ', props.dataCountries)
 
-    const selectedCountry = props.dataCountries.find(el => {
+    const selectedCountry = props.dataCountries.find(el => { // 2. avec, retrouver l'objet detail parmi le tableau de tous les pays -> .find()
     return el.alpha3Code === countryId    
     })
-    const countryLetter = (selectedCountry.alpha2Code).toLowerCase()
+    const countryLetter = (selectedCountry.alpha2Code).toLowerCase() // Prendre le alphaCode2 pour modifier l'url de l'image du drapeau
     
     
     console.log('selectedCountry ', selectedCountry)
     
     return(
         <div className='CountryDetails'>
-            <img src={`https://flagpedia.net/data/flags/icon/72x54/${countryLetter}.png`} alt=''/>
+            <img src={`https://flagpedia.net/data/flags/icon/72x54/${countryLetter}.png`} alt=''/> 
             <h2>{selectedCountry.name.common}</h2>
             <table>
                 <tr>Capital<td>{selectedCountry.capital}</td></tr>
-                <tr>Area<td>{selectedCountry.area}</td></tr>
-            
+                <tr>Area<td>{selectedCountry.area}</td></tr>           
             <tr>Borders
               <td>  
                 <ul>  
